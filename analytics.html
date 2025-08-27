@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Analytics - Medi-Care Hub</title>
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .analytics-container {
+            padding: 20px;
+        }
+
+        .analytics-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .analytics-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .analytics-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .metric-icon.heart { color: #e74c3c; }
+        .metric-icon.weight { color: #f39c12; }
+        .metric-icon.activity { color: #27ae60; }
+        .metric-icon.sleep { color: #9b59b6; }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .metric-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .metric-trend {
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .trend-up { color: #27ae60; }
+        .trend-down { color: #e74c3c; }
+
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        .insights-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .insights-section h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+        }
+
+        .insight-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .insight-item:last-child {
+            border-bottom: none;
+        }
+
+        .insight-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .insight-icon.positive { color: #27ae60; }
+        .insight-icon.warning { color: #f39c12; }
+        .insight-icon.negative { color: #e74c3c; }
+
+        .insight-content h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .insight-content p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .goals-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .goals-section h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .goal-item:last-child {
+            border-bottom: none;
+        }
+
+        .goal-info h4 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+
+        .goal-info p {
+            margin: 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .goal-progress {
+            width: 100px;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .goal-progress-fill {
+            height: 100%;
+            background: #1abc9c;
+            transition: width 0.3s ease;
+        }
+
+        .goal-percentage {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-wrapper {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-section">
+            <img src="logo.png" alt="Company Logo" class="logo" />
+        </div>
+
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+            <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+            <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+            <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+            <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+            <li><a href="analytics.html" class="active"><i class="fas fa-chart-line"></i> <span>Analytics</span></a></li>
+            <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+
+        <div class="profile-section">
+            <img src="patient.jpg" alt="Patient Photo" class="profile-pic">
+            <div class="patient-info">
+                <h4>Maya Agarwal</h4>
+                <p>Age: 28</p>
+                <p>Blood Group: O+</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+        <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+    </div>
+
+    <div class="main-content">
+        <div class="analytics-container">
+            <div class="analytics-header">
+                <h1>Health Analytics Dashboard</h1>
+                <p>Track your health progress and insights over time</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon heart">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="metric-value">72</div>
+                    <div class="metric-label">Heart Rate (BPM)</div>
+                    <div class="metric-trend trend-down">
+                        <i class="fas fa-arrow-down"></i> 5% from last week
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon weight">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="metric-value">65.2</div>
+                    <div class="metric-label">Weight (kg)</div>
+                    <div class="metric-trend trend-down">
+                        <i class="fas fa-arrow-down"></i> 1.2kg this month
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon activity">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="metric-value">8,547</div>
+                    <div class="metric-label">Daily Steps</div>
+                    <div class="metric-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 12% from yesterday
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon sleep">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="metric-value">7.5</div>
+                    <div class="metric-label">Sleep (hours)</div>
+                    <div class="metric-trend trend-up">
+                        <i class="fas fa-arrow-up"></i> 0.5h from last night
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Blood Pressure Trends</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="bloodPressureChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Weight Progress</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Activity Levels</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Sleep Quality</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="sleepChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insights-section">
+                <h3>Health Insights</h3>
+                <div class="insight-item">
+                    <div class="insight-icon positive">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>Great Progress on Weight Goals</h4>
+                        <p>You've lost 1.2kg this month, which is within your healthy weight loss target.</p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>Blood Pressure Slightly Elevated</h4>
+                        <p>Your recent readings show a slight increase. Consider reducing salt intake and stress.</p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon positive">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>Improved Sleep Quality</h4>
+                        <p>Your sleep duration has increased by 0.5 hours, contributing to better overall health.</p>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <div class="insight-icon positive">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="insight-content">
+                        <h4>Excellent Activity Level</h4>
+                        <p>You're consistently meeting your daily step goal of 8,000 steps.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goals-section">
+                <h3>Health Goals Progress</h3>
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <h4>Target Weight: 63kg</h4>
+                        <p>Current: 65.2kg | Remaining: 2.2kg</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div class="goal-progress">
+                            <div class="goal-progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="goal-percentage">75%</div>
+                    </div>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <h4>Daily Steps: 10,000</h4>
+                        <p>Current: 8,547 | Remaining: 1,453</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div class="goal-progress">
+                            <div class="goal-progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <div class="goal-percentage">85%</div>
+                    </div>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-info">
+                        <h4>Sleep Goal: 8 hours</h4>
+                        <p>Current: 7.5 hours | Remaining: 0.5 hours</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div class="goal-progress">
+                            <div class="goal-progress-fill" style="width: 94%;"></div>
+                        </div>
+                        <div class="goal-percentage">94%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section contact-info">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+                    <p><i class="fas fa-envelope"></i> support@medicarehub.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+                </div>
+                
+                <div class="footer-section social-links">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section legal-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                        <li><a href="data-security.html">Data Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Medi-Care Hub. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+        });
+
+        function initializeCharts() {
+            // Blood Pressure Chart
+            const bloodPressureCtx = document.getElementById('bloodPressureChart').getContext('2d');
+            new Chart(bloodPressureCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Systolic',
+                        data: [120, 118, 122, 125, 128, 130],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Diastolic',
+                        data: [80, 78, 82, 85, 88, 90],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 70,
+                            max: 140
+                        }
+                    }
+                }
+            });
+
+            // Weight Chart
+            const weightCtx = document.getElementById('weightChart').getContext('2d');
+            new Chart(weightCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Weight (kg)',
+                        data: [68.5, 67.8, 67.2, 66.5, 65.8, 65.2],
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 64,
+                            max: 70
+                        }
+                    }
+                }
+            });
+
+            // Activity Chart
+            const activityCtx = document.getElementById('activityChart').getContext('2d');
+            new Chart(activityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Daily Steps',
+                        data: [7500, 8200, 9100, 7800, 8900, 12000, 8547],
+                        backgroundColor: '#27ae60',
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 15000
+                        }
+                    }
+                }
+            });
+
+            // Sleep Chart
+            const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+            new Chart(sleepCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Deep Sleep', 'Light Sleep', 'REM Sleep', 'Awake'],
+                    datasets: [{
+                        data: [25, 45, 20, 10],
+                        backgroundColor: [
+                            '#9b59b6',
+                            '#3498db',
+                            '#e74c3c',
+                            '#f39c12'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const arrow = document.getElementById("sidebar-arrow");
+            sidebar.classList.toggle("collapsed");
+            arrow.classList.toggle("fa-chevron-left");
+            arrow.classList.toggle("fa-chevron-right");
+        }
+    </script>
+</body>
+</html> 

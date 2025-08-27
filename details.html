@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi-Care Hub - Details</title>
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="details.js"></script>
+</head>
+<body>
+    <div class="background-slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-box">
+            <div class="logo">
+                <img src="logo.png" alt="Medicare Logo" />
+                <h1>More details</h1>
+            </div>
+            <div class="success-message" id="successMessage">Account created successfully! Redirecting to login...</div>
+            <form id="DetailsForm" action="login.html" method="POST">
+                <div class="input-group">
+                    <i class="fas fa-users"></i>
+                    <input type="text" id="DetailsName" name="DetailsName" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-calendar-check"></i>
+                    <input type="number" id="DetailsAge" name="DetailsAge" placeholder="Age" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-calendar"></i>
+                    <input type="tel" id="detailsDOB" name="detailsDOB" placeholder="DOB (DD-MM-YYYY)" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <select id="Gender" name="Gender" required class="dropdown-select">
+                        <option value="" disabled selected>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="trans">Trans</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-droplet"></i>
+                    <select id="BloodType" name="BloodType" required class="dropdown-select">
+                        <option value="" disabled selected>Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="RH">RH</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <select id="DocPatient" name="DocPatient" required class="dropdown-select">
+                        <option value="" disabled selected>You are registering as</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="patient">Patient</option>
+                    </select>
+                </div>
+
+                <div id="doctorFields" style="display: none;">
+                    <div class="input-group">
+                        <i class="fas fa-stethoscope"></i>
+                        <select id="Specialty" name="Specialty" class="dropdown-select">
+                            <option value="" disabled selected>Select Specialty</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="dermatology">Dermatology</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="MedicalLicense" name="MedicalLicense" placeholder="Medical License Number" pattern="^\d{9}$" title="Must be 9 digits">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-signup">Sign up</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

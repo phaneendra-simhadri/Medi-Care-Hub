@@ -1,0 +1,1010 @@
+/* ========================================
+   MEDI-CARE HUB - SYMPTOM CHECKER STYLES
+   ======================================== */
+
+/* Custom CSS Variables for Symptom Checker */
+:root {
+    --symptom-primary: #4361ee;
+    --symptom-secondary: #3a0ca3;
+    --symptom-accent: #4cc9f0;
+    --symptom-light: #f8f9fa;
+    --symptom-dark: #212529;
+    --symptom-danger: #ef233c;
+    --symptom-success: #2a9d8f;
+    --symptom-warning: #f4a261;
+    --symptom-emergency: #d90429;
+    --symptom-info: #4895ef;
+    --symptom-gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --symptom-gradient-accent: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--symptom-gradient-primary);
+}
+
+header h1 {
+    color: var(--symptom-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-4xl);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: var(--font-weight-bold);
+}
+
+header p {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: var(--font-size-lg);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+/* Body Map Container */
+.body-map-container {
+    flex: 1;
+    min-width: 350px;
+    background-color: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gender Selector and View Toggle */
+.gender-selector, .view-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+}
+
+.gender-selector button, .view-toggle button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    background: var(--bg-white);
+    color: var(--text-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+}
+
+.gender-selector button.active, .view-toggle button.active {
+    background: var(--symptom-primary);
+    color: var(--text-white);
+    border-color: var(--symptom-primary);
+}
+
+.gender-selector button:hover, .view-toggle button:hover {
+    border-color: var(--symptom-primary);
+    background: var(--symptom-light);
+}
+
+.gender-selector button.active:hover, .view-toggle button.active:hover {
+    background: var(--symptom-primary);
+    color: var(--text-white);
+}
+
+/* Body Map */
+.body-map {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 500px;
+}
+
+.human-body {
+    position: relative;
+    width: 300px;
+    height: 600px;
+}
+
+.body-part {
+    position: absolute;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border-radius: var(--border-radius-sm);
+    background: rgba(67, 97, 238, 0.1);
+    border: 2px solid transparent;
+}
+
+.body-part:hover {
+    background: rgba(67, 97, 238, 0.2);
+    border-color: var(--symptom-primary);
+    transform: scale(1.05);
+}
+
+.body-part::after {
+    content: attr(data-part);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--symptom-primary);
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    pointer-events: none;
+}
+
+.body-part:hover::after {
+    opacity: 1;
+}
+
+/* Symptom Details */
+.symptom-details {
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.selected-symptoms, .symptom-questions {
+    background-color: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+.selected-symptoms h2, .symptom-questions h2 {
+    color: var(--symptom-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 2px solid var(--symptom-primary);
+    padding-bottom: var(--spacing-sm);
+}
+
+#selected-symptoms-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    min-height: 50px;
+    padding: var(--spacing-md);
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+    border: 2px dashed var(--border-color);
+}
+
+.symptom-chip {
+    background: var(--symptom-primary);
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-full);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    animation: fadeIn 0.3s ease-in;
+}
+
+.symptom-chip:hover {
+    background: var(--symptom-secondary);
+    transform: translateY(-1px);
+}
+
+.symptom-chip button {
+    background: none;
+    border: none;
+    color: var(--text-white);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+}
+
+.symptom-chip button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Button Groups */
+.btn-group {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.primary-btn, .secondary-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-normal);
+    font-size: var(--font-size-md);
+}
+
+.primary-btn {
+    background: var(--symptom-primary);
+    color: var(--text-white);
+}
+
+.primary-btn:hover {
+    background: var(--symptom-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+.secondary-btn {
+    background: var(--symptom-secondary);
+    color: var(--text-white);
+}
+
+.secondary-btn:hover {
+    background: var(--symptom-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 12, 163, 0.3);
+}
+
+/* Questions Container */
+#questions-container {
+    margin-top: var(--spacing-lg);
+}
+
+.question-group {
+    background: var(--bg-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+    border-left: 4px solid var(--symptom-primary);
+    transition: all var(--transition-normal);
+}
+
+.question-group:hover {
+    background: var(--bg-white);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.question-group h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Radio and Checkbox Groups */
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.radio-option, .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.radio-option:hover, .checkbox-option:hover {
+    background: rgba(67, 97, 238, 0.1);
+}
+
+.radio-option input, .checkbox-option input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--symptom-primary);
+    cursor: pointer;
+}
+
+.radio-option label, .checkbox-option label {
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+    font-weight: var(--font-weight-medium);
+}
+
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-md);
+    transition: border-color var(--transition-normal);
+    font-family: var(--font-family-primary);
+}
+
+.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+    outline: none;
+    border-color: var(--symptom-primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Results Container */
+.results-container {
+    background-color: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    margin-top: var(--spacing-xl);
+    display: none;
+}
+
+.results-container h2 {
+    color: var(--symptom-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 2px solid var(--symptom-primary);
+    padding-bottom: var(--spacing-sm);
+}
+
+#results-content {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Condition Cards */
+.condition-card {
+    background: var(--bg-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--symptom-primary);
+    transition: all var(--transition-normal);
+}
+
+.condition-card:hover {
+    background: var(--bg-white);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transform: translateY(-2px);
+}
+
+.condition-card h3 {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.condition-card h3 .probability {
+    background: var(--symptom-primary);
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.condition-card p {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Probability Bar */
+.probability-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-light);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.probability-fill {
+    height: 100%;
+    background: var(--symptom-gradient-primary);
+    border-radius: var(--border-radius-full);
+    transition: width var(--transition-normal);
+}
+
+/* Recommendations */
+.recommendations h3 {
+    color: var(--symptom-success);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.recommendation-item {
+    background: var(--success-light);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-sm);
+    border-left: 4px solid var(--symptom-success);
+    transition: all var(--transition-normal);
+}
+
+.recommendation-item:hover {
+    background: var(--bg-white);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.recommendation-item i {
+    color: var(--symptom-success);
+    margin-right: var(--spacing-sm);
+    font-size: var(--font-size-lg);
+}
+
+/* Emergency Warning */
+.emergency-warning {
+    background: var(--symptom-emergency);
+    color: var(--text-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+    animation: pulse 2s infinite;
+    border: 2px solid var(--symptom-danger);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.emergency-warning i {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.emergency-warning strong {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Symptom Modal */
+.symptom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal-backdrop);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.symptom-modal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-content h3 {
+    color: var(--symptom-primary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+}
+
+/* Symptom Options */
+.symptom-options {
+    display: grid;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.symptom-option {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    background: var(--bg-white);
+}
+
+.symptom-option:hover {
+    border-color: var(--symptom-primary);
+    background: var(--symptom-light);
+    transform: translateY(-1px);
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+/* Empty Message */
+.empty-message {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    padding: var(--spacing-xl);
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+    border: 2px dashed var(--border-color);
+}
+
+/* Body Part Positioning - Male Front View */
+.male.front-view .head {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+}
+
+.male.front-view .neck {
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 30px;
+}
+
+.male.front-view .left-shoulder {
+    top: 110px;
+    left: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.male.front-view .right-shoulder {
+    top: 110px;
+    right: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.male.front-view .chest {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+}
+
+.male.front-view .abdomen {
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+}
+
+.male.front-view .left-arm {
+    top: 120px;
+    left: 0;
+    width: 30px;
+    height: 120px;
+}
+
+.male.front-view .right-arm {
+    top: 120px;
+    right: 0;
+    width: 30px;
+    height: 120px;
+}
+
+.male.front-view .left-hand {
+    top: 240px;
+    left: 10px;
+    width: 25px;
+    height: 30px;
+}
+
+.male.front-view .right-hand {
+    top: 240px;
+    right: 10px;
+    width: 25px;
+    height: 30px;
+}
+
+.male.front-view .pelvis {
+    top: 290px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+}
+
+.male.front-view .left-leg {
+    top: 330px;
+    left: 30px;
+    width: 40px;
+    height: 120px;
+}
+
+.male.front-view .right-leg {
+    top: 330px;
+    right: 30px;
+    width: 40px;
+    height: 120px;
+}
+
+.male.front-view .left-foot {
+    top: 450px;
+    left: 25px;
+    width: 35px;
+    height: 25px;
+}
+
+.male.front-view .right-foot {
+    top: 450px;
+    right: 25px;
+    width: 35px;
+    height: 25px;
+}
+
+/* Body Part Positioning - Female Front View */
+.female.front-view .head {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+}
+
+.female.front-view .chest {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+}
+
+.female.front-view .abdomen {
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+}
+
+.female.front-view .pelvis {
+    top: 290px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+}
+
+.female.front-view .left-leg,
+.female.front-view .right-leg {
+    top: 330px;
+    width: 40px;
+    height: 120px;
+}
+
+.female.front-view .left-leg {
+    left: 30px;
+}
+
+.female.front-view .right-leg {
+    right: 30px;
+}
+
+.female.front-view .left-shoulder {
+    top: 110px;
+    left: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.female.front-view .right-shoulder {
+    top: 110px;
+    right: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.female.front-view .abdomen {
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+}
+
+/* Body Part Positioning - Back View */
+.back-view .head {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+}
+
+.back-view .neck {
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 30px;
+}
+
+.back-view .left-shoulder {
+    top: 110px;
+    left: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.back-view .right-shoulder {
+    top: 110px;
+    right: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.back-view .back {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+}
+
+.back-view .lower-back {
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+}
+
+.back-view .left-arm {
+    top: 120px;
+    left: 0;
+    width: 30px;
+    height: 120px;
+}
+
+.back-view .right-arm {
+    top: 120px;
+    right: 0;
+    width: 30px;
+    height: 120px;
+}
+
+.back-view .left-hand {
+    top: 240px;
+    left: 10px;
+    width: 25px;
+    height: 30px;
+}
+
+.back-view .right-hand {
+    top: 240px;
+    right: 10px;
+    width: 25px;
+    height: 30px;
+}
+
+.back-view .pelvis {
+    top: 290px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+}
+
+.back-view .left-leg {
+    top: 330px;
+    left: 30px;
+    width: 40px;
+    height: 120px;
+}
+
+.back-view .right-leg {
+    top: 330px;
+    right: 30px;
+    width: 40px;
+    height: 120px;
+}
+
+.back-view .left-foot {
+    top: 450px;
+    left: 25px;
+    width: 35px;
+    height: 25px;
+}
+
+.back-view .right-foot {
+    top: 450px;
+    right: 25px;
+    width: 35px;
+    height: 25px;
+}
+
+.back-view .back::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 40px;
+    background: rgba(67, 97, 238, 0.2);
+    border-radius: var(--border-radius-sm);
+}
+
+.female.back-view .back {
+    top: 150px;
+}
+
+.female.back-view .pelvis {
+    top: 290px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .body-map-container, .symptom-details {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .body-map {
+        min-height: 400px;
+    }
+    
+    .male.front-view .head,
+    .female.front-view .head {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .male.front-view .chest,
+    .female.front-view .chest {
+        width: 100px;
+        height: 60px;
+    }
+    
+    .female.front-view .chest {
+        width: 100px;
+        height: 60px;
+    }
+    
+    .male.front-view .abdomen,
+    .female.front-view .abdomen {
+        width: 80px;
+        height: 50px;
+    }
+    
+    .male.front-view .left-arm,
+    .male.front-view .right-arm {
+        width: 25px;
+        height: 100px;
+    }
+    
+    .male.front-view .left-leg,
+    .male.front-view .right-leg,
+    .female.front-view .left-leg,
+    .female.front-view .right-leg {
+        width: 35px;
+        height: 100px;
+    }
+    
+    .female.front-view .pelvis {
+        width: 70px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: var(--spacing-lg);
+    }
+    
+    header h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .body-map {
+        min-height: 350px;
+    }
+    
+    .gender-selector, .view-toggle {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .gender-selector button, .view-toggle button {
+        width: 200px;
+    }
+    
+    .selected-symptoms, .symptom-questions {
+        padding: var(--spacing-lg);
+    }
+    
+    .body-part::after {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+}

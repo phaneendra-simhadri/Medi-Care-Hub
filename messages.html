@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Messages - Medical Health Monitoring</title>
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="logo.png" alt="Company Logo" class="logo" />
+    </div>
+
+   
+
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+      <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+      <li><a href="messages.html" class="active"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+      <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+      <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+      <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+      <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+
+    <!-- Patient Details -->
+    <div class="profile-section">
+      <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+      <div class="patient-info">
+        <h4>John Doe</h4>
+        <p>Age: 45</p>
+        <p>Blood Group: B+</p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+    <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+  </div>
+
+  <!-- Main Content -->
+  <!-- Paste this inside the <body> tag where main-content starts -->
+    <div class="main-content messages-page">
+      
+      <div class="doctor-list-panel">
+        <h2>Your Doctors</h2>
+        <div class="doctor-list">
+          <div class="doctor-entry" onclick="openChat('Dr. Alice Smith', 'Cardiologist', 'images/doctors/doctor1.jpg')">
+            <img src="images/doctors/doctor1.jpg" alt="Dr. Alice Smith">
+            <span>Dr. Alice Smith</span>
+          </div>
+          <div class="doctor-entry" onclick="openChat('Dr. Ben Patel', 'Dermatologist', 'images/doctors/doctor2.jpg')">
+            <img src="images/doctors/doctor2.jpg" alt="Dr. Ben Patel">
+            <span>Dr. Ben Patel</span>
+          </div>
+          <!-- Add more doctors as needed -->
+        </div>
+      </div>
+    
+      <div class="messages-wrapper">
+        <div class="messages-header">
+          <div class="doctor-info">
+            <img src="images/doctors/doctor1.jpg" alt="Doctor" id="doctorPhoto" />
+            <div>
+              <h2 id="doctorName">Doctor's Name</h2>
+              <p id="doctorSpecialty">Specialty</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="chat-box" id="chatBox">
+          <div class="message received">Welcome to your chat with the doctor.</div>
+        </div>
+    
+        <div class="chat-input">
+          <textarea id="messageInput" placeholder="Type your message..."></textarea>
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    
+
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="doctor.js"></script>
+</body>
+</html>

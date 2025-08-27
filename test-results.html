@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Results - Medical Health Monitoring</title>
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="logo.png" alt="Company Logo" class="logo" />
+    </div>
+
+   
+
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+      <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+      <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+      <li><a href="test-results.html"  class="active"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+      <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+      <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+      <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+
+    <!-- Patient Details -->
+    <div class="profile-section">
+      <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+      <div class="patient-info">
+        <h4>John Doe</h4>
+        <p>Age: 45</p>
+        <p>Blood Group: B+</p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+    <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+  </div>
+
+  <!-- Top Bar -->
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2 style="margin-bottom: 20px;">Test Results</h2>
+
+    <!-- Test Metrics Table -->
+    <div class="panel-box">
+      <h3>Detailed Test Metrics</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Test Name</th>
+            <th>Result</th>
+            <th>Normal Range</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Blood Sugar (Fasting)</td><td>95 mg/dL</td><td>70 - 100 mg/dL</td><td>2025-03-20</td></tr>
+          <tr><td>Cholesterol (Total)</td><td>180 mg/dL</td><td>125 - 200 mg/dL</td><td>2025-03-18</td></tr>
+          <tr><td>Blood Pressure</td><td>120/80 mmHg</td><td>Normal</td><td>2025-03-15</td></tr>
+          <tr><td>Hemoglobin (Hb)</td><td>14.5 g/dL</td><td>13.5 - 17.5 g/dL</td><td>2025-03-10</td></tr>
+          <tr><td>WBC Count</td><td>6,200 /µL</td><td>4,000 - 11,000 /µL</td><td>2025-03-10</td></tr>
+          <tr><td>Platelet Count</td><td>250,000 /µL</td><td>150,000 - 450,000 /µL</td><td>2025-03-10</td></tr>
+          <tr><td>TSH</td><td>2.8 µIU/mL</td><td>0.4 - 4.0 µIU/mL</td><td>2025-03-07</td></tr>
+          <tr><td>Vitamin D</td><td>32 ng/mL</td><td>30 - 100 ng/mL</td><td>2025-03-01</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PDF Reports Table -->
+    <div class="panel-box">
+      <h3>Previous Test Reports</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Report Name</th>
+            <th>Date</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Blood Test</td>
+            <td>2025-03-20</td>
+            <td><a href="reports/test_2025-03-20.pdf" class="download-btn" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>Lipid Profile</td>
+            <td>2025-03-18</td>
+            <td><a href="reports/lipid_2025-03-18.pdf" class="download-btn" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>Complete Blood Count</td>
+            <td>2025-03-10</td>
+            <td><a href="reports/cbc_2025-03-10.pdf" class="download-btn" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>Thyroid Panel</td>
+            <td>2025-03-07</td>
+            <td><a href="reports/thyroid_2025-03-07.pdf" class="download-btn" target="_blank">Download</a></td>
+          </tr>
+          <tr>
+            <td>Vitamin D & B12</td>
+            <td>2025-03-01</td>
+            <td><a href="reports/vitamin_2025-03-01.pdf" class="download-btn" target="_blank">Download</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section contact-info">
+              <h4>Contact Us</h4>
+              <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+              <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+          </div>
+          
+          <div class="footer-section social-links">
+              <h4>Connect With Us</h4>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section legal-links">
+              <h4>Legal</h4>
+              <ul>
+                  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="terms-of-use.html">Terms of Use</a></li>
+                  <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                  <li><a href="data-security.html">Data Security</a></li>
+              </ul>
+          </div>
+      </div>
+      
+       <div class="footer-bottom">
+          <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+      </div>
+  </footer> 
+  </div>
+
+</body>
+</html>

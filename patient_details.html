@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Dashboard - Medical Health Monitoring</title>
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="doc_styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <script defer>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+
+    function selectPatient(card, name, age, severity, lastVisit) {
+      document.querySelectorAll('.patient-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const detail = document.getElementById("detailContent");
+      detail.innerHTML = `
+        <div class="detail-block">
+          <h3>${name}</h3>
+          <p><strong>Age:</strong> ${age}</p>
+          <p><strong>Case Severity:</strong> ${severity}</p>
+          <p><strong>Last Visit:</strong> ${lastVisit}</p>
+          <h4>History</h4>
+          <ul>
+            <li>01 May 2025 - Medication: Paracetamol 500mg</li>
+            <li>28 Apr 2025 - Consultation with Dr. Smith</li>
+            <li>20 Apr 2025 - Blood Test</li>
+          </ul>
+          <button class="prescribe-btn">Prescribe Medication</button>
+          <button class="appointment-btn">Call for Appointment</button>
+        </div>
+      `;
+    }
+  </script>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li><a href="patients.html" class="active"><i class="fas fa-user-injured"></i> <span>Patients</span></a></li>
+      <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="top-bar">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1>Welcome, Dr. Smith</h1>
+    </div>
+
+    <div class="main-container">
+      <div class="patient-list">
+        <h2>Your Patients</h2>
+
+        <div class="patient-card" onclick="selectPatient(this, 'John Doe', 45, 'Critical', '02 May 2025')">
+          <img src="patient1.jpg" alt="John Doe">
+          <div class="info">
+            <h3>John Doe</h3>
+            <p>Age: 45</p>
+            <p>Severity: <span class="badge critical">Critical</span></p>
+            <p>Last Visit: 02 May 2025</p>
+          </div>
+        </div>
+
+        <div class="patient-card" onclick="selectPatient(this, 'Jane Miller', 37, 'Stable', '28 Apr 2025')">
+          <img src="patient2.jpg" alt="Jane Miller">
+          <div class="info">
+            <h3>Jane Miller</h3>
+            <p>Age: 37</p>
+            <p>Severity: <span class="badge stable">Stable</span></p>
+            <p>Last Visit: 28 Apr 2025</p>
+          </div>
+        </div>
+
+        <div class="patient-card" onclick="selectPatient(this, 'Rahul Verma', 60, 'Moderate', '30 Apr 2025')">
+          <img src="patient3.jpg" alt="Rahul Verma">
+          <div class="info">
+            <h3>Rahul Verma</h3>
+            <p>Age: 60</p>
+            <p>Severity: <span class="badge moderate">Moderate</span></p>
+            <p>Last Visit: 30 Apr 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="patient-detail" id="patientDetail">
+        <h2>Patient Details</h2>
+        <div id="detailContent">
+          <p>Select a patient to view their medical history and prescribe medication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

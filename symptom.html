@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Body Symptom Checker</title>
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="symptom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i>Body Symptom Checker</h1>
+            <p>Click on body parts to select your symptoms and get personalized health insights</p>
+        </header>
+
+        <div class="main-content">
+            <div class="body-map-container">
+                <div class="gender-selector">
+                    <button class="active" id="male-btn"><i class="fas fa-mars"></i> Male</button>
+                    <button id="female-btn"><i class="fas fa-venus"></i> Female</button>
+                </div>
+                
+                <div class="body-map" id="body-map">
+                    <!-- Male body will be shown by default -->
+                    <div class="human-body male front-view">
+                        <div class="body-part head" data-part="head"></div>
+                        <div class="body-part neck" data-part="neck"></div>
+                        <div class="body-part left-shoulder" data-part="left_shoulder"></div>
+                        <div class="body-part right-shoulder" data-part="right_shoulder"></div>
+                        <div class="body-part chest" data-part="chest"></div>
+                        <div class="body-part abdomen" data-part="abdomen"></div>
+                        <div class="body-part left-arm" data-part="left_arm"></div>
+                        <div class="body-part right-arm" data-part="right_arm"></div>
+                        <div class="body-part left-hand" data-part="left_hand"></div>
+                        <div class="body-part right-hand" data-part="right_hand"></div>
+                        <div class="body-part pelvis" data-part="pelvis"></div>
+                        <div class="body-part left-leg" data-part="left_leg"></div>
+                        <div class="body-part right-leg" data-part="right_leg"></div>
+                        <div class="body-part left-foot" data-part="left_foot"></div>
+                        <div class="body-part right-foot" data-part="right_foot"></div>
+                        <!-- Additional parts -->
+                        <div class="body-part left-eye" data-part="left_eye"></div>
+                        <div class="body-part right-eye" data-part="right_eye"></div>
+                        <div class="body-part mouth" data-part="mouth"></div>
+                        <div class="body-part left-ear" data-part="left_ear"></div>
+                        <div class="body-part right-ear" data-part="right_ear"></div>
+                        <div class="body-part left-knee" data-part="left_knee"></div>
+                        <div class="body-part right-knee" data-part="right_knee"></div>
+                        <div class="body-part left-ankle" data-part="left_ankle"></div>
+                        <div class="body-part right-ankle" data-part="right_ankle"></div>
+                    </div>
+                    <div class="human-body female front-view" style="display: none;">
+                        <div class="body-part head" data-part="head"></div>
+                        <div class="body-part neck" data-part="neck"></div>
+                        <div class="body-part left-shoulder" data-part="left_shoulder"></div>
+                        <div class="body-part right-shoulder" data-part="right_shoulder"></div>
+                        <div class="body-part chest" data-part="chest"></div>
+                        <div class="body-part abdomen" data-part="abdomen"></div>
+                        <div class="body-part left-arm" data-part="left_arm"></div>
+                        <div class="body-part right-arm" data-part="right_arm"></div>
+                        <div class="body-part left-hand" data-part="left_hand"></div>
+                        <div class="body-part right-hand" data-part="right_hand"></div>
+                        <div class="body-part pelvis" data-part="pelvis"></div>
+                        <div class="body-part left-leg" data-part="left_leg"></div>
+                        <div class="body-part right-leg" data-part="right_leg"></div>
+                        <div class="body-part left-foot" data-part="left_foot"></div>
+                        <div class="body-part right-foot" data-part="right_foot"></div>
+                        <!-- Additional parts -->
+                        <div class="body-part left-eye" data-part="left_eye"></div>
+                        <div class="body-part right-eye" data-part="right_eye"></div>
+                        <div class="body-part mouth" data-part="mouth"></div>
+                        <div class="body-part left-ear" data-part="left_ear"></div>
+                        <div class="body-part right-ear" data-part="right_ear"></div>
+                        <div class="body-part left-knee" data-part="left_knee"></div>
+                        <div class="body-part right-knee" data-part="right_knee"></div>
+                        <div class="body-part left-ankle" data-part="left_ankle"></div>
+                        <div class="body-part right-ankle" data-part="right_ankle"></div>
+                    </div>
+                    <div class="human-body male back-view" style="display: none;">
+                        <!-- Back view body parts -->
+                        <div class="body-part head" data-part="head"></div>
+                        <div class="body-part neck" data-part="neck"></div>
+                        <div class="body-part left-shoulder" data-part="left_shoulder"></div>
+                        <div class="body-part right-shoulder" data-part="right_shoulder"></div>
+                        <div class="body-part back" data-part="back"></div>
+                        <div class="body-part lower-back" data-part="lower_back"></div>
+                        <div class="body-part left-arm" data-part="left_arm"></div>
+                        <div class="body-part right-arm" data-part="right_arm"></div>
+                        <div class="body-part left-hand" data-part="left_hand"></div>
+                        <div class="body-part right-hand" data-part="right_hand"></div>
+                        <div class="body-part pelvis" data-part="pelvis"></div>
+                        <div class="body-part left-leg" data-part="left_leg"></div>
+                        <div class="body-part right-leg" data-part="right_leg"></div>
+                        <div class="body-part left-foot" data-part="left_foot"></div>
+                        <div class="body-part right-foot" data-part="right_foot"></div>
+                    </div>
+                    
+                    <div class="human-body female back-view" style="display: none;">
+                        <!-- Same structure as male back view -->
+                        <div class="body-part head" data-part="head"></div>
+                        <div class="body-part neck" data-part="neck"></div>
+                        <div class="body-part left-shoulder" data-part="left_shoulder"></div>
+                        <div class="body-part right-shoulder" data-part="right_shoulder"></div>
+                        <div class="body-part back" data-part="back"></div>
+                        <div class="body-part lower-back" data-part="lower_back"></div>
+                        <div class="body-part left-arm" data-part="left_arm"></div>
+                        <div class="body-part right-arm" data-part="right_arm"></div>
+                        <div class="body-part left-hand" data-part="left_hand"></div>
+                        <div class="body-part right-hand" data-part="right_hand"></div>
+                        <div class="body-part pelvis" data-part="pelvis"></div>
+                        <div class="body-part left-leg" data-part="left_leg"></div>
+                        <div class="body-part right-leg" data-part="right_leg"></div>
+                        <div class="body-part left-foot" data-part="left_foot"></div>
+                        <div class="body-part right-foot" data-part="right_foot"></div>
+                    </div>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="active" id="front-btn"><i class="fas fa-user"></i> Front View</button>
+                    <button id="back-btn"><i class="fas fa-user"></i> Back View</button>
+                </div>
+            </div>
+            
+            <div class="symptom-details">
+                <div class="selected-symptoms">
+                    <h2><i class="fas fa-clipboard-list"></i> Selected Symptoms</h2>
+                    <div id="selected-symptoms-list"></div>
+                    <div class="btn-group">
+                        <button id="analyze-btn" class="primary-btn"><i class="fas fa-search"></i> Analyze Symptoms</button>
+                        <button id="clear-btn" class="secondary-btn"><i class="fas fa-trash"></i> Clear All</button>
+                    </div>
+                </div>
+                
+                <div class="symptom-questions" id="symptom-questions">
+                    <h2><i class="fas fa-question-circle"></i> Symptom Details</h2>
+                    <div id="questions-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <h2><i class="fas fa-file-medical-alt"></i> Analysis Results</h2>
+            <div id="results-content"></div>
+            <div class="recommendations" id="recommendations">
+                <h3><i class="fas fa-heartbeat"></i> Recommended Actions</h3>
+                <div id="recommendations-content"></div>
+            </div>
+            <div class="btn-group">
+                <button id="new-check-btn" class="primary-btn"><i class="fas fa-redo"></i> Start New Check</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="symptom.js"></script>
+</body>
+</html>

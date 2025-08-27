@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medication - Medical Health Monitoring</title>
+      <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-section">
+          <img src="logo.png" alt="Company Logo" class="logo" />
+        </div>
+    
+       
+    
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a href="medication.html" class="active"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+          <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+          <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+          <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+          <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+          <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+          <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    
+        <!-- Patient Details -->
+        <div class="profile-section">
+          <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+          <div class="patient-info">
+            <h4>John Doe</h4>
+            <p>Age: 45</p>
+            <p>Blood Group: B+</p>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+        <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+      </div>
+
+  <div class="main-content">
+    <h2>Your Medication</h2>
+    <div class="medication-container">
+      <!-- Left Side: Today's Medications -->
+      <div class="medication-left">
+        <div class="medication-box">
+          <h2>Today's Medications</h2>
+          <ul class="medication-list">
+            <li>
+              <input type="checkbox" id="med1">
+              <label for="med1"><strong>Paracetamol - 500mg (8:00 AM)</strong></label>
+              <p>For fever and pain relief.</p>
+            </li>
+            <li>
+              <input type="checkbox" id="med2">
+              <label for="med2"><strong>Amoxicillin - 250mg (12:00 PM)</strong></label>
+              <p>To treat bacterial infection.</p>
+            </li>
+            <li>
+              <input type="checkbox" id="med3">
+              <label for="med3"><strong>Metformin - 850mg (6:00 PM)</strong></label>
+              <p>For blood sugar control (diabetes).</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tomorrow's Medications -->
+        <div class="medication-box">
+          <h2>Tomorrow's Medications</h2>
+          <ul class="medication-list">
+            <li><strong>Paracetamol - 500mg</strong> (8:00 AM) – For fever</li>
+            <li><strong>Amoxicillin - 250mg</strong> (12:00 PM) – To treat infection</li>
+            <li><strong>Metformin - 850mg</strong> (6:00 PM) – Blood sugar control</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Side: Current Prescription and Medication History -->
+      <div class="medication-right">
+        <!-- Current Prescription & Links to Buy -->
+        <div class="medication-box">
+          <h2>Current Prescription</h2>
+          <ul class="medication-list">
+            <li><strong>Paracetamol - 500mg</strong></li>
+            <li><strong>Amoxicillin - 250mg</strong></li>
+            <li><strong>Metformin - 850mg</strong></li>
+          </ul>
+          <h4>Where to Buy</h4>
+          <ul class="buy-list">
+            <li><a href="#">Chemist Warehouse</a></li>
+            <li><a href="#">CVS Pharmacy</a></li>
+            <li><a href="#">Walgreens</a></li>
+            <li><a href="#">1mg (India)</a></li>
+          </ul>
+        </div>
+
+        <!-- Medication History -->
+        <div class="medication-box">
+          <h2>Medication History</h2>
+          <ul class="history-list">
+            <li><strong>Ibuprofen - 400mg</strong> (Mar 25) - Pain and inflammation</li>
+            <li><strong>Vitamin D - 1000 IU</strong> (Mar 24) - Bone health</li>
+            <li><strong>Aspirin - 75mg</strong> (Mar 23) - Heart health</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section contact-info">
+              <h4>Contact Us</h4>
+              <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+              <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+          </div>
+          
+          <div class="footer-section social-links">
+              <h4>Connect With Us</h4>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section legal-links">
+              <h4>Legal</h4>
+              <ul>
+                  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="terms-of-use.html">Terms of Use</a></li>
+                  <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                  <li><a href="data-security.html">Data Security</a></li>
+              </ul>
+          </div>
+      </div>
+      
+       <div class="footer-bottom">
+          <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+      </div>
+  </footer> 
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Health Monitoring</title>
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-section">
+          <img src="logo.png" alt="Company Logo" class="logo" />
+        </div>
+    
+       
+    
+        <ul>
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+            <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+            <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+            <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-line"></i> <span>Analytics</span></a></li>
+            <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+            <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+          </ul>
+    
+        <!-- Patient Details -->
+        <div class="profile-section">
+          <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+          <div class="patient-info">
+            <h4>John Doe</h4>
+            <p>Age: 45</p>
+            <p>Blood Group: B+</p>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+        <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+      </div>
+    
+
+      <div class="main-content">
+
+        <div class="content">
+            <h1 style="border-bottom: 2px solid #1abc9c; color: #2c3e50;">Welcome Maya Agarwal!</h1>
+            <div class="dashboard">
+                <!-- Profile Card -->
+                <div class="card profile-card">
+                    <div>
+                        <div class="profile-image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="5"/>
+                                <path d="M20 21v-2a7 7 0 0 0-14 0v2"/>
+                            </svg>
+                        </div>
+                        <div class="user-note">"Include a user persona quote here..."</div>
+                    </div>
+        
+                    <div class="profile-details">
+                        <div class="label">Personal name</div>
+                        <div class="value" id="profileFullName">[Full Name]</div>
+                        
+                        <div class="label">Age/gender</div>
+                        <div class="value" id="profileAgeGender">[Age/gender]</div>
+                        
+                        <div class="label">Weight</div>
+                        <div class="value" id="profileWeight">[Weight]</div>
+                        
+                        <div class="label">Height</div>
+                        <div class="value" id="profileHeight">[Height]</div>
+                        
+                        <div class="label">Blood group</div>
+                        <div class="value" id="profileBloodGroup">[Blood group]</div>
+                    </div>
+        
+                    <div>
+                        <h3>Allergies</h3>
+                        <div class="allergies">
+                            <ul>
+                                <li>soy milk</li>
+                                <li>lactose</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="bio">
+                        <textarea placeholder="Write a bio for your user persona..." class="bio-textarea"></textarea>
+                    </div>
+                </div>
+                <!-- Metrics Card -->
+            <div class="card metrics">
+                <h3 style="color: #2c3e50; border-bottom: 2px solid #1abc9c; padding-bottom: 8px;"> Health Metrics & Trends </h3>
+                <div class="metric" data-metric="bloodPressure">
+                    <div class="metric-name">Blood pressure</div>
+                    <div class="progress-bar" onclick="handleProgressClick(event, 'blood-pressure')">
+                        <div id="blood-pressure" class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                    <div class="metric-value">0%</div>
+                </div>
+            
+                <div class="metric" data-metric="metabolism">
+                    <div class="metric-name">Metabolism</div>
+                    <div class="progress-bar" onclick="handleProgressClick(event, 'metabolism')">
+                        <div id="metabolism" class="progress-fill" style="width: 35%;"></div>
+                    </div>
+                    <div class="metric-value">0%</div>
+                </div>
+            
+                <div class="metric" data-metric="stressLevel">
+                    <div class="metric-name">Stress level</div>
+                    <div class="progress-bar" onclick="handleProgressClick(event, 'stress-level')">
+                        <div id="stress-level" class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <div class="metric-value">0%</div>
+                </div>
+            
+                <div class="metric" data-metric="sleep">
+                    <div class="metric-name">Sleep</div>
+                    <div class="progress-bar" onclick="handleProgressClick(event, 'sleep')">
+                        <div id="sleep" class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <div class="metric-value">0%</div>
+                </div>
+
+                <div class="trials">
+                    <button class="trial-btn">Trial 1</button>
+                    <button class="trial-btn">Trial 2</button>
+                    <button class="trial-btn">Trial 3</button>
+                </div>
+
+                <div class="trial-actions">  
+                    <button class="trial-save-btn">Save Progress</button>
+                    <button class="trial-reset-btn">Reset All</button>
+                </div>
+            </div>
+            <!-- Lower Cards -->
+            <div class="lower-cards">
+                <!-- Checkups Card -->
+                <div class="card checkups">
+                    <h3 style="color: #2c3e50; border-bottom: 2px solid #1abc9c; padding-bottom: 8px;"> Checkups Due </h3>
+                    <ul>
+                        <li>2nd november 2024</li>
+                        <li>Vaccine last shot on 7th august of this year</li>
+                        <li>Dentist appointment at 11 a.m.</li>
+                    </ul>
+                </div>
+
+                <!-- Medications Card -->
+                <div class="card medications">
+                    <h3 style="color: #2c3e50; border-bottom: 2px solid #1abc9c; padding-bottom: 8px;"> Medications </h3>
+                    <ul>
+                        <li>vit-a supplements</li>
+                        <li>zincovit (a-o-e)</li>
+                    </ul>
+                </div>
+
+                <!-- Progress Report Card -->
+                <div class="card progress-report">
+                    <h3 style="color: #2c3e50; border-bottom: 2px solid #1abc9c; padding-bottom: 8px;"> Progress Report </h3>
+                    <textarea class="progress-textarea" placeholder="Track your health progress, pain points, and observations..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section contact-info">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+                    <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+                </div>
+                
+                <div class="footer-section social-links">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section legal-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                        <li><a href="data-security.html">Data Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+             <div class="footer-bottom">
+                <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+            </div>
+        </footer> 
+    </div>
+    </body>
+</html>

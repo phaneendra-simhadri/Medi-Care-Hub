@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Health Monitoring</title>
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- to use font awesome icons-->
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-section">
+          <img src="logo.png" alt="Company Logo" class="logo" />
+        </div>
+    
+       
+    
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+          <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+          <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+          <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+          <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+          <li><a href="help.html" class="active"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+          <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    
+        <!-- Patient Details -->
+        <div class="profile-section">
+          <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+          <div class="patient-info">
+            <h4>John Doe</h4>
+            <p>Age: 45</p>
+            <p>Blood Group: B+</p>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+        <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+      </div>
+
+    <div class="main-content">
+        
+        
+        <section class="hero">
+            <h2>Help & Support Center</h2>
+            <p>Find answers, contact support, or get emergency help.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Type your question here...">
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </section>
+
+        <div class="help-main-content">
+            <!-- Left Column -->
+            <div class="help-left-column">
+                <!-- Contact Support Section -->
+                <div class="help-section">
+                    <h2>Contact Support</h2>
+                    <div class="contact-cards-container">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h3>Phone Support</h3>
+                            <p>Customer Care: +1 (800) 123-4567 </p>
+                            <p>Mon-Fri, 9AM-6PM </p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Support</h3>
+                            <p>General: support@medcare.com </p>
+                            <p>Technical: tech@medcare.com</p>
+                            <p>Response time: <strong>Within 24 hours </strong></p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Live Chat</h3>
+                            <p>Available: Mon-Fri, 8AM-8PM </p>
+                            <button class="trial-btn" style="margin-top: 12px;">Start Chat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="help-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I update my personal information?</span>
+                            <i class="toggle-icon">+</i>
+                        </div>
+                        <div class="faq-answer">
+                            You can edit your profile information by clicking the "Edit" button on your profile card. 
+                            After making changes, click "Save" to update your information.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I schedule an appointment?</span>
+                            <i class="toggle-icon">+</i>
+                        </div>
+                        <div class="faq-answer">
+                            Navigate to the "Appointments" section and click on a doctor's profile. 
+                            You'll see options to schedule either an in-person or virtual appointment.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I create an account?</span>
+                            <i class="toggle-icon">+</i>
+                        </div>
+                        <div class="faq-answer">
+                            Click on "Sign Up" at the top right corner and follow the steps.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is my medical information secure?</span>
+                            <i class="toggle-icon">+</i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, we use encryption and comply with HIPAA/GDPR to protect your data.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I reschedule an appointment?</span>
+                            <i class="toggle-icon">+</i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, log in and go to "My Appointments" to modify bookings.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h2><i class="fas fa-video"></i> Video Tutorials</h2>
+                    <div class="video-thumbnails">
+                        <!-- Video content would go here -->
+                        <div class="video-card">
+                            <h3>Getting Started Guide</h3>
+                            <p>Learn how to navigate your patient portal</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/9YffrCViTVk" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="video-card">
+                            <h3>Medication Management</h3>
+                            <p>How to track and update your medications</p>
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/7U1tN5ndiak" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Resources Section (Moved to left column) -->
+                <div class="help-section">
+                    <h2><i class="fas fa-file-download"></i> Resources</h2>
+                    <ul class="download-list">
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Patient Handbook (PDF)</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Medication Schedule Template</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column (Emergency) -->
+            <div class="help-right-column">
+                <div class="help-sections emergency-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Emergency Assistance</h2>
+                    <p>For immediate medical assistance, please call:</p>
+                    <div class="emergency-number">
+                        <i class="fas fa-phone"></i> 911 or your local emergency number
+                    </div>
+                    <p><strong>Global Helplines:</strong> <a href="#">View List</a></p>
+                    <p class="user-note">This portal is not for emergency medical situations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

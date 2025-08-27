@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics | MedCare</title>
+  <meta name="description" content="Insights and statistics about patient trends and clinic performance.">
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="doctor.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo-section">
+          <img src="logo.png" alt="Company Logo" class="logo" />
+        </div>
+    
+       
+    
+        <ul>
+          <li><a href="doc_dashboard.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a href="doc_patients.html"><i class="fas fa-users"></i> <span>Patients</span></a></li>
+          <li><a href="doc_appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+          <li><a href="doc_messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+          <li><a href="doc_analytics.html" class="active"><i class="fas fa-chart-line"></i> <span>Analytics</span></a></li>
+          <li><a href="doc_settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+          <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+        </ul>
+    
+        <!-- Patient Details -->
+        <div class="profile-section">
+          <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+          <div class="patient-info">
+            <h4>John Doe</h4>
+            <p>Age: 45</p>
+            <p>Blood Group: B+</p>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+        <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+      </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div id="analytics-page" class="page-content active-page">
+        <h2>Practice Analytics</h2>
+        <!-- <header>
+          <h2>Practice Analytics</h2>
+          <div class="header-actions">
+            <div class="date-range-picker">
+              <select id="analytics-timeframe">
+                <option value="7">Last 7 Days</option>
+                <option value="30" selected>Last 30 Days</option>
+                <option value="90">Last 90 Days</option>
+                <option value="365">Last Year</option>
+                <option value="custom">Custom Range</option>
+              </select>
+              <div id="custom-range-selector" style="display: none;">
+                <input type="date" id="analytics-start-date" />
+                <span>to</span>
+                <input type="date" id="analytics-end-date" />
+                <button class="btn" id="apply-analytics-range">Apply</button>
+              </div>
+            </div>
+          </div>
+        </header> -->
+
+        <div class="analytics-overview">
+          <div class="analytics-card">
+            <h3>Appointments</h3>
+            <div class="chart-container">
+              <canvas id="appointments-chart"></canvas>
+            </div>
+            <div class="analytics-stats">
+              <div class="stat">
+                <span class="value">42</span>
+                <span class="label">Completed</span>
+              </div>
+              <div class="stat">
+                <span class="value">8</span>
+                <span class="label">Upcoming</span>
+              </div>
+              <div class="stat">
+                <span class="value">3</span>
+                <span class="label">Cancelled</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h3>Patient Demographics</h3>
+            <div class="chart-container">
+              <canvas id="demographics-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-details">
+          <div class="analytics-card">
+            <h3>Common Conditions</h3>
+            <div class="conditions-list">
+              <div class="condition">
+                <span class="name">Hypertension</span>
+                <span class="count">24 patients</span>
+                <div class="progress-bar"><div class="progress" style="width: 45%;"></div></div>
+              </div>
+              <div class="condition">
+                <span class="name">Diabetes</span>
+                <span class="count">18 patients</span>
+                <div class="progress-bar"><div class="progress" style="width: 34%;"></div></div>
+              </div>
+              <div class="condition">
+                <span class="name">Hyperlipidemia</span>
+                <span class="count">12 patients</span>
+                <div class="progress-bar"><div class="progress" style="width: 23%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="analytics-card">
+            <h3>Prescription Trends</h3>
+            <div class="chart-container">
+              <canvas id="prescriptions-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="doctor.js"></script>
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section contact-info">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+            <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+        </div>
+        
+        <div class="footer-section social-links">
+            <h4>Connect With Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section legal-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-use.html">Terms of Use</a></li>
+                <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                <li><a href="data-security.html">Data Security</a></li>
+            </ul>
+        </div>
+    </div>
+    
+     <div class="footer-bottom">
+        <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+    </div>
+</footer> 
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billing & Payment</title>
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="logo.png" alt="Company Logo" class="logo" />
+    </div>
+
+   
+
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+      <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+      <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+      <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+      <li><a href="billing.html" class="active"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+      <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+      <li><a href="settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+
+    <!-- Patient Details -->
+    <div class="profile-section">
+      <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+      <div class="patient-info">
+        <h4>John Doe</h4>
+        <p>Age: 45</p>
+        <p>Blood Group: B+</p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+    <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+  </div>
+
+  <div class="main-content">
+    <h2>Billing & Payment</h2>
+    <div class="billing-container styled-box">
+    
+      <!-- Pending Payments Table -->
+      <h3>Pending Payments</h3>
+      <table class="billing-table">
+        <thead>
+          <tr>
+            <th>Bill ID</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#1001</td>
+            <td>Consultation - Dr. Smith</td>
+            <td>₹800</td>
+            <td>2025-04-20</td>
+            <td><span class="status pending">Pending</span></td>
+            <td><button class="pay-btn" onclick="showPaymentForm('1001', '₹800')">Pay Now</button></td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <!-- Completed Payments Table -->
+      <h3>Completed Payments</h3>
+      <table class="billing-table">
+        <thead>
+          <tr>
+            <th>Bill ID</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Paid on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#1002</td>
+            <td>Blood Test Package</td>
+            <td>₹1,200</td>
+            <td>2025-04-18</td>
+            <td><span class="status paid">Paid</span></td>
+            <td>2025-04-18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section contact-info">
+              <h4>Contact Us</h4>
+              <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+              <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+              <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+          </div>
+          
+          <div class="footer-section social-links">
+              <h4>Connect With Us</h4>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+          
+          <div class="footer-section legal-links">
+              <h4>Legal</h4>
+              <ul>
+                  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="terms-of-use.html">Terms of Use</a></li>
+                  <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                  <li><a href="data-security.html">Data Security</a></li>
+              </ul>
+          </div>
+      </div>
+      
+       <div class="footer-bottom">
+          <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+      </div>
+  </footer> 
+  </div>
+
+  <!-- Payment Popup -->
+  <div id="payment-popup" class="popup-overlay">
+    <div class="popup-box">
+      <button class="close-btn" onclick="closePopup()">&times;</button>
+      <h3 id="form-title">Pay Bill</h3>
+      <p><strong>Amount:</strong> <span id="selected-amount">₹0</span></p>
+
+      <h4>Cost Breakdown</h4>
+      <table class="cost-breakdown-table">
+        <tr>
+          <td><strong>Consultation Fee:</strong></td>
+          <td>₹500</td>
+        </tr>
+        <tr>
+          <td><strong>Service Charges:</strong></td>
+          <td>₹200</td>
+        </tr>
+        <tr>
+          <td><strong>Taxes:</strong></td>
+          <td>₹100</td>
+        </tr>
+      </table>
+
+      <div class="qr-section">
+        <img id="qr-image" src="qr.jpg" alt="QR Code">
+        <p>Scan this QR to pay directly via UPI</p>
+      </div>
+      <h4>OR</h4>
+      <p>Pay using card</p>
+      <form class="payment-form">
+        <label for="cardName">Name on Card</label>
+        <input type="text" id="cardName" placeholder="John Doe">
+        <br>
+
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+        <br>
+        <div class="card-details">
+          <div>
+            <label for="expiry">Expiry</label>
+            <input type="text" id="expiry" placeholder="MM/YY">
+          </div>
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123">
+          </div>
+        </div>
+
+        <button class="send-btn">Pay Now</button>
+      </form>
+    </div>
+    
+  </div>
+</body>
+</html>

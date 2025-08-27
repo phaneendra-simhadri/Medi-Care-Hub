@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Medical Health Monitoring</title>
+  <link rel="stylesheet" href="base-styles.css" />
+  <link rel="stylesheet" href="doctor.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="logo.png" alt="Company Logo" class="logo" />
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li><a href="medication.html"><i class="fas fa-pills"></i> <span>Medication</span></a></li>
+      <li><a href="appointments.html"><i class="fas fa-calendar-check"></i> <span>Appointments</span></a></li>
+      <li><a href="messages.html"><i class="fas fa-comments"></i> <span>Messages</span></a></li>
+      <li><a href="test-results.html"><i class="fas fa-vial"></i> <span>Test Results</span></a></li>
+      <li><a href="billing.html"><i class="fas fa-credit-card"></i> <span>Billing & Payment</span></a></li>
+      <li><a href="help.html"><i class="fas fa-question-circle"></i> <span>Help & Support</span></a></li>
+      <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+    </ul>
+
+    <div class="profile-section">
+      <img src="patient-photo.jpg" alt="Patient Photo" class="profile-pic">
+      <div class="patient-info">
+        <h4>John Doe</h4>
+        <p>Age: 45</p>
+        <p>Blood Group: B+</p>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-toggle-tab" onclick="toggleSidebar()">
+    <i class="fas fa-chevron-left" id="sidebar-arrow"></i>
+  </div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div id="settings-page" class="page-content active-page">
+
+      <h2>Account Settings</h2>
+  
+
+    <div class="settings-tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="profile">Profile</button>
+        <button class="tab-btn" data-tab="password">Password</button>
+        <button class="tab-btn" data-tab="notifications">Notifications</button>
+        <button class="tab-btn" data-tab="preferences">Preferences</button>
+      </div>
+
+      <div class="tab-contents">
+        <div class="tab-content active" data-tab="profile">
+          <form class="profile-form">
+            <label>First Name</label>
+            <input type="text" id="first-name" value="Smith" />
+
+            <label>Last Name</label>
+            <input type="text" id="last-name" value="Johnson" />
+
+            <button type="submit" class="btn primary-btn">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="password">
+          <form class="password-form">
+            <label>Current Password</label>
+            <input type="password" id="current-password" />
+            <br>
+
+            <label>New Password</label>
+            <input type="password" id="new-password" />
+            <br>
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirm-password" />
+
+            <button type="submit" class="btn primary-btn">Update Password</button>
+          </form>
+        </div>
+
+        <div class="tab-content" data-tab="notifications">
+          <div class="notification-options">
+            <div class="option">
+              <label>Email Alerts</label>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="option">
+              <label>SMS Alerts</label>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="option">
+              <label>In-app Messages</label>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="notification-methods">
+            <div class="method">
+              <label>Allow urgent alerts</label>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="method">
+              <label>Appointment reminders</label>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="preferences">
+          <div class="preference-settings">
+            <label for="theme-preference">Theme</label>
+            <select id="theme-preference">
+              <option value="light" selected>Light</option>
+              <option value="dark">Dark</option>
+            </select>
+            <br>
+
+            <label for="default-view">Default View</label>
+            <select id="default-view">
+              <option value="dashboard" selected>Dashboard</option>
+              <option value="patients">Patients</option>
+              <option value="appointments">Appointments</option>
+            </select>
+            <br>
+
+            <label for="appointment-duration">Default Appointment Duration</label>
+            <select id="appointment-duration">
+              <option value="15">15 minutes</option>
+              <option value="30" selected>30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60">60 minutes</option>
+            </select>
+            <br>
+
+            <button class="btn primary-btn">Save Preferences</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section contact-info">
+            <h4>Contact Us</h4>
+            <p><i class="fas fa-phone"></i> +1 (800) 555-1234</p>
+            <p><i class="fas fa-envelope"></i> support@healthmonitoring.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Healthcare City, HC 12345</p>
+        </div>
+        
+        <div class="footer-section social-links">
+            <h4>Connect With Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-section legal-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-use.html">Terms of Use</a></li>
+                <li><a href="hipaa-compliance.html">HIPAA Compliance</a></li>
+                <li><a href="data-security.html">Data Security</a></li>
+            </ul>
+        </div>
+    </div>
+    
+     <div class="footer-bottom">
+        <p>&copy; 2025 Medical Health Monitoring. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="doctor.js"></script>
+
+</body>
+</html>
